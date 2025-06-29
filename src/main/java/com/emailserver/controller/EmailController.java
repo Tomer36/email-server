@@ -21,8 +21,9 @@ public class EmailController {
     @PostMapping("/send")
     public ResponseEntity<String> sendEmail(@RequestBody EmailRequest request) {
         try {
-            emailService.sendEmail(request);
-            return ResponseEntity.ok("Email sent successfully");
+            String resultMessage = emailService.sendEmail(request);
+            System.out.println(resultMessage);
+            return ResponseEntity.ok(resultMessage);
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error sending email" + e.getMessage());
         }

@@ -11,10 +11,10 @@ public class EmailStrategyFactory {
         if (email.toLowerCase().endsWith("@gmail.com")) {
             return new GmailStrategy();
         }
-        if (email.toLowerCase().endsWith("@yahoo.com")) {
+        else if (email.toLowerCase().endsWith("@yahoo.com")) {
             return new YahooStrategy();
         }
-        if (email.toLowerCase().endsWith("@walla.com")) {
+        else if (email.toLowerCase().endsWith("@walla.com")) {
             return new WallaStrategy();
         } else return null;
     }
