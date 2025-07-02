@@ -29,12 +29,8 @@ public class EmailService {
 //        else
 //            System.out.println("Invalid Email Address");
 //    }
-    public String sendEmail(EmailRequest request) {
-        System.out.println(request.getFrom());
+    public void sendEmail(EmailRequest request) {
         EmailStrategy strategy = EmailStrategyFactory.getStrategy(request.getFrom());
-        if (strategy != null) {
-            return strategy.send();
-        }
-        return "Failed";
+        strategy.send(request);
     }
 }

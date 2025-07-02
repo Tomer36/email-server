@@ -1,5 +1,7 @@
 package com.emailserver.strategy;
 
+import com.emailserver.model.EmailRequest;
+
 public interface EmailStrategy {
-    public String send();
+    public void send(EmailRequest request);
 }
