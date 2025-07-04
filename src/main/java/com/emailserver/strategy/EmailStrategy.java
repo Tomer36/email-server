@@ -16,6 +16,7 @@ public abstract class EmailStrategy {
 
     public void send(EmailRequest request) {
         try {
+            System.out.println("Sending email on thread: " + Thread.currentThread().getName());
             sendViaSMTP(request);
             System.out.println("[" + getClass().getSimpleName() + "] Real email sent successfully from " +
                     request.getFrom() + " to " + request.getTo());
