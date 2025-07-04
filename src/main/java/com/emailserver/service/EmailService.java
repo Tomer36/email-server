@@ -2,7 +2,6 @@ package com.emailserver.service;
 
 import com.emailserver.factory.EmailStrategyFactory;
 import com.emailserver.model.EmailRequest;
-import com.emailserver.strategy.EmailSender;
 import com.emailserver.strategy.EmailStrategy;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +30,7 @@ public class EmailService {
 //            System.out.println("Invalid Email Address");
 //    }
     public void sendEmail(EmailRequest request) {
-        EmailSender strategy = EmailStrategyFactory.getStrategy(request.getFrom());
+        EmailStrategy strategy = EmailStrategyFactory.getStrategy(request.getFrom());
         strategy.send(request);
     }
 }

@@ -1,11 +1,9 @@
 package com.emailserver.strategy;
 
 import com.emailserver.config.VendorConfiguration;
-import com.emailserver.model.EmailRequest;
-import com.emailserver.model.VendorConfig;
 
 
-public class YahooStrategy extends EmailSender {
+public class YahooStrategy extends EmailStrategy {
     public YahooStrategy() {
         super(VendorConfiguration.getConfig("yahoo.com"));
     }

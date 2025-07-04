@@ -16,7 +16,7 @@ public class EmailStrategyFactory {
 //        } else return null;
 //    }
 
-    public static EmailSender getStrategy(String email) {
+    public static EmailStrategy getStrategy(String email) {
         if (email.toLowerCase().endsWith("@gmail.com")) {
             return new GmailStrategy();
         } else if (email.toLowerCase().endsWith("@yahoo.com")) {
