@@ -14,7 +14,7 @@ public class VendorConfiguration {
 
     @PostConstruct
     public void init() {
-        vendorConfigMap.put("gmail.com", new VendorConfig("smtp.gmail.com", "admin", "admin"));
+        vendorConfigMap.put("gmail.com", new VendorConfig("smtp.gmail.com", "battlefrogontherun@gmail.com", "jgyk vkle ylxi szgp"));
         vendorConfigMap.put("walla.co.il", new VendorConfig("smtp.walla.co.il", "admin", "admin"));
         vendorConfigMap.put("yahoo.com", new VendorConfig("smtp.yahoo.com", "admin", "admin"));
     }
