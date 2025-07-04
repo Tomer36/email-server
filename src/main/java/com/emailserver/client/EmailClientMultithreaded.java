@@ -13,7 +13,7 @@ public class EmailClientMultithreaded {
         for (int i = 0; i < threadCount; i++) {
             final int idx = i;
             threads[i] = new Thread(() -> {
-                String to = "customer" + idx + "@test.com";
+                String to = "tamer8@live.com";
                 String from;
                 if (idx % 3 == 0) {
                     from = "testuser@gmail.com";
