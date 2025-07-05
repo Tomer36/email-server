@@ -11,13 +11,6 @@ public class EmailServerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EmailServerApplication.class, args);
-//		EmailRequest request = new EmailRequest();
-//		request.setFrom("tamer.saliba36@walla.com");
-//		request.setTo("svetlana_melamed@bmc.com");
-//		request.setBody("Test Email");
-//		EmailService service = new EmailService();
-//		service.sendEmail(request);
-
 	}
 
 }
