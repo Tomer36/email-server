@@ -8,28 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
-
-    //    EmailStrategy strategy;
-//    public void sendEmail(EmailRequest request){
-//        if (request.getFrom().toLowerCase().endsWith("@gmail.com")) {
-//            strategy = new GmailStrategy();
-//        }
-//        else if (request.getFrom().toLowerCase().endsWith("@yahoo.com")) {
-//            strategy = new YahooStrategy();
-//        }
-//        else if (request.getFrom().toLowerCase().endsWith("@walla.com")) {
-//            strategy = new WallaStrategy();
-//        }
-//
-//        else strategy = null;
-//
-//        if(strategy != null){
-//            strategy.send();
-//        }
-//
-//        else
-//            System.out.println("Invalid Email Address");
-//    }
     @Async
     public void sendEmail(EmailRequest request) {
         EmailStrategy strategy = EmailStrategyFactory.getStrategy(request.getFrom());
