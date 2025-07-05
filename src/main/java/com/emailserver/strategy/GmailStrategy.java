@@ -1,10 +1,11 @@
 package com.emailserver.strategy;
 
-import com.emailserver.config.VendorConfiguration;
+
+import com.emailserver.model.VendorConfig;
 
 public class GmailStrategy extends EmailStrategy {
-    public GmailStrategy() {
-        super(VendorConfiguration.getConfig("gmail.com"));
+    public GmailStrategy(VendorConfig config) {
+        super(config);
     }
 }
 

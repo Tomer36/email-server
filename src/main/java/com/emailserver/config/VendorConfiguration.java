@@ -1,25 +1,42 @@
 package com.emailserver.config;
 
 import com.emailserver.model.VendorConfig;
-import jakarta.annotation.PostConstruct;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
+@Component
 public class VendorConfiguration {
 
-    private static final Map<String, VendorConfig> vendorConfigMap = new HashMap<>();
+    private final Map<String, VendorConfig> postfixToConfig = new HashMap<>();
 
-    @PostConstruct
-    public void init() {
-        vendorConfigMap.put("gmail.com", new VendorConfig("smtp.gmail.com", "battlefrogontherun@gmail.com", "jgyk vkle ylxi szgp"));
-        vendorConfigMap.put("walla.co.il", new VendorConfig("smtp.walla.co.il", "admin", "admin"));
-        vendorConfigMap.put("yahoo.com", new VendorConfig("smtp.yahoo.com", "admin", "admin"));
+    @Autowired
+    public VendorConfiguration(EmailVendorsProperties vendorsProperties) {
+        // Map postfix -> config for easy lookup
+        putVendor(vendorsProperties.getGmail());
+        putVendor(vendorsProperties.getWalla());
+        putVendor(vendorsProperties.getYahoo());
     }
 
-    public static VendorConfig getConfig(String domain) {
-        return vendorConfigMap.get(domain);
+    private void putVendor(EmailVendorsProperties.Vendor vendor) {
+        postfixToConfig.put(
+                vendor.getPostfix().toLowerCase(),
+                new VendorConfig(vendor.getHost(), vendor.getUsername(), vendor.getPassword())
+        );
+    }
+
+    public VendorConfig getConfigByEmail(String email) {
+        String postfix = extractPostfix(email);
+        VendorConfig config = postfixToConfig.get(postfix.toLowerCase());
+        if (config == null) {
+            throw new IllegalArgumentException("Unsupported email postfix: " + postfix);
+        }
+        return config;
+    }
+
+    private String extractPostfix(String email) {
+        return email.substring(email.indexOf('@'));
     }
 }
